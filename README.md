@@ -36,9 +36,11 @@ This guide provides detailed, step-by-step instructions for attaching and mounti
 1. Select the new volume in the Volumes list.  
 2. Click **Actions > Attach Volume**.  
     ![Attach Volume](docs/attach_volume.png)
-
-    ![Attach Volume to instance](docs/attach_volume_to_instance.png)
-3. Select your instance and specify a device name (e.g., `/dev/xvdf`).  
+---
+3. Select your instance and specify a device name (e.g., `/dev/xvdf`). 
+ 
+     ![Attach Volume to instance](docs/attach_volume_to_instance.png)
+---
 4. Click **Attach**.  
 
   
@@ -131,5 +133,5 @@ ssh -i /path/to/your-key.pem ec2-user@<instance-public-ip>
   Save and exit the editor.
 
   Verify on the AWS console the new EBS volume has been successfully added and mounted:
-  
+
     ![Block Devices](docs/blk_device.png)
