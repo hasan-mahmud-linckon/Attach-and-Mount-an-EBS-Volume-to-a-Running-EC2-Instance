@@ -135,3 +135,32 @@ ssh -i /path/to/your-key.pem ec2-user@<instance-public-ip>
   Verify on the AWS console the new EBS volume has been successfully added and mounted:
 
     ![Block Devices](docs/blk_device.png)
+
+  ---
+### Addressing "No Space Left on Device" Issue on EC2
+
+To address the "no space left on device" issue, follow these steps:
+
+#### Check Disk Usage
+First, use the command `df -h` to check the disk usage of your EC2 instance. Identify which partitions are full.
+
+#### Increase the Volume Size
+- Navigate to the AWS Management Console.
+- Go to the EC2 instance and select the volume that you want to increase.
+- Click on "Actions" and then select "Modify Volume".
+- Increase the size (e.g., from 8GB to 30GB) and confirm the changes.
+
+#### Wait for the Volume State to Update
+After modifying, wait for the new volume size to reflect as "In Use" in the AWS Console. It may take around 10-15 minutes for the status to change.
+
+#### Resize the File System
+Once the volume is updated, connect to your EC2 instance via SSH.
+- Run `lsblk` to check the available block devices to ensure the volume size has been updated.
+- Use the commands:
+  - `sudo growpart /dev/xvda 1` to resize the partition (replace 1 with the appropriate partition number if needed).
+  - Then use `sudo resize2fs /dev/xvda1` (replace with your partition path if different) to resize the file system.
+
+#### Verify Changes
+Run `df -h` again to confirm that additional space is now available on the device.
+
+This process ensures that you can resolve the "no space left on device" issue effectively.
