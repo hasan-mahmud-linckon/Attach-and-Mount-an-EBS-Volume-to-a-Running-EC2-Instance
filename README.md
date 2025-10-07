@@ -157,8 +157,8 @@ After modifying, wait for the new volume size to reflect as "In Use" in the AWS 
 Once the volume is updated, connect to your EC2 instance via SSH.
 - Run `lsblk` to check the available block devices to ensure the volume size has been updated.
 - Use the commands:
-  - `sudo growpart /dev/xvda 1` to resize the partition (replace 1 with the appropriate partition number if needed).
-  - Then use `sudo resize2fs /dev/xvda1` (replace with your partition path if different) to resize the file system.
+  - `sudo growpart /dev/nvme0n1 1` to resize the partition (replace 1 with the appropriate partition number if needed).
+  - Then use `sudo resize2fs /dev/nvme0n1p1` (replace with your partition path if different) to resize the file system.
 
 #### Verify Changes
 Run `df -h` again to confirm that additional space is now available on the device.
