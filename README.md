@@ -1,4 +1,4 @@
-# Step-by-Step: Attaching a New EBS Volume to EC2
+# Step-by-Step: Attaching and Expanding an EBS Volume to EC2
 This guide provides detailed, step-by-step instructions for attaching and mounting a new Amazon EBS volume and expanding an existing EBS volume to a running EC2 instance using the AWS Console.
 
 ## Prerequisites  
